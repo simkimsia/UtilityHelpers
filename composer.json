@@ -1,0 +1,7 @@
+{
+	"name": "simkimsia/utility-helpers",
+	"type": "cakephp-plugin",
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}

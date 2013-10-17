@@ -1,0 +1,36 @@
+language: php
+
+php:
+  - 5.3
+  - 5.4
+
+env:
+  - CAKE_VERSION=master
+  - CAKE_VERSION=2.5
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get -qq install dnsutils
+  - php /home/travis/.phpenv/versions/5.3.26/bin/composer.phar self-update
+
+before_script:
+  - sh -c "mysql -e 'CREATE DATABASE cakephp_test;'"
+  - git clone git://github.com/cakephp/cakephp ../cakephp && cd ../cakephp && git checkout $CAKE_VERSION
+  - cp -R ../UtilityLib plugins/UtilityLib
+  - chmod -R 777 ../cakephp/app/tmp
+  - echo "<?php
+    class DATABASE_CONFIG {
+    public \$test = array(
+      'datasource' => 'Database/Mysql',
+      'database' => 'cakephp_test',
+      'host' => '0.0.0.0',
+      'login' => 'travis',
+      'persistent' => false,
+    );
+    }" > ../cakephp/app/Config/database.php
+
+script:
+  - ./lib/Cake/Console/cake test UtilityHelpers AllTests --stderr
+
+notifications:
+  email: false
