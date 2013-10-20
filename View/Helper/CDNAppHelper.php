@@ -25,6 +25,7 @@ class CDNAppHelper extends Helper {
  * Generate url for given asset file that prepends with the cdn base url. Depending on options passed provides full url with domain name.
  * Also calls Helper::assetTimestamp() to add timestamp to local files
  *
+ * @link https://github.com/cakephp/cakephp/issues/2149
  * @param string|array Path string or url array
  * @param array $options Options array. Possible keys:
  *   `fullBase` Return full url with domain name
