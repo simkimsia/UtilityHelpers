@@ -24,4 +24,6 @@ class AssetsHelper extends AppHelper {
 
 	public $cssFiles = array();
 
+	public $jsFiles = array();
+
 }

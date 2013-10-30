@@ -130,4 +130,15 @@ class AssetsHelperTest extends CakeTestCase {
 		// THEN we expect true
 		$this->assertTrue(is_array($this->Assets->cssFiles));
 	}
+
+/**
+ * testJsFiles method
+ *
+ * @return void
+ */
+	public function testJsFiles() {
+		// WHEN we test if jsfiles is an array
+		// THEN we expect true
+		$this->assertTrue(is_array($this->Assets->jsFiles));
+	}
 }
